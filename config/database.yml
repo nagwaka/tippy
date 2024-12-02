@@ -24,4 +24,9 @@ production:
     username: <%= ENV["PRODUCTION_DATABASE_USERNAME"] %>
     password: <%= ENV["PRODUCTION_DATABASE_PASSWORD"] %>
     url: <%= ENV['PRODUCTION_DATABASE_URL'] %>
-  
+
+  cable:
+    <<: *default
+    database: <%= ENV['PRODUCTION_CABLE_DATABASE_NAME'] || "#{ENV['PRODUCTION_DATABASE_NAME']}_cable" %>
+    username: <%= ENV['PRODUCTION_CABLE_DATABASE_USERNAME'] || ENV['POSTGRES_USERNAME'] %>
+    password: <%= ENV['PRODUCTION_CABLE_DATABASE_PASSWORD'] || ENV['POSTGRES_PASSWORD'] %>
