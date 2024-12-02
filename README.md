@@ -36,10 +36,9 @@ cp .env.example .env
 Update the .env file with your PostgreSQL credentials:
 ### Example
 ```
-POSTGRES_USERNAME=your_postgres_username
-POSTGRES_PASSWORD=your_postgres_password
-DEVELOPMENT_DATABASE_NAME=tip_calculator_development
-TEST_DATABASE_NAME=tip_calculator_test
+TEST_DATABASE_NAME=your_test_database_name
+TEST_DATABASE_USERNAME=your_test_database_username
+TEST_DATABASE_PASSWORD=your_test_password
 ```
 ### 4. Set Up the Database
 Run the following commands to create and migrate the database:
