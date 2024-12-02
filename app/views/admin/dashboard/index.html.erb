@@ -1,0 +1,39 @@
+<div class="container mx-auto mt-10 max-w-5xl">
+  <h1 class="text-3xl font-bold mb-6">Admin Dashboard</h1>
+
+  <table class="w-full border-collapse border border-gray-300">
+    <thead>
+      <tr>
+        <th class="border border-gray-300 px-4 py-2">Bill Amount ($)</th>
+        <th class="border border-gray-300 px-4 py-2">Tip Percentage (%)</th>
+        <th class="border border-gray-300 px-4 py-2">Tip Amount ($)</th>
+        <th class="border border-gray-300 px-4 py-2">Total Bill ($)</th>
+        <th class="border border-gray-300 px-4 py-2">Number of People</th>
+        <th class="border border-gray-300 px-4 py-2">Per Person Amount ($)</th>
+        <th class="border border-gray-300 px-4 py-2">Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tip_calculations.each do |calc| %>
+        <tr>
+          <td class="border border-gray-300 px-4 py-2"><%= number_to_currency(calc.bill_amount) %></td>
+          <td class="border border-gray-300 px-4 py-2"><%= calc.tip_percentage %> %</td>
+          <td class="border border-gray-300 px-4 py-2"><%= number_to_currency(calc.tip_amount) %></td>
+          <td class="border border-gray-300 px-4 py-2"><%= number_to_currency(calc.total_bill) %></td>
+          <td class="border border-gray-300 px-4 py-2"><%= calc.number_of_people %></td>
+          <td class="border border-gray-300 px-4 py-2"><%= number_to_currency(calc.per_person_amount) %></td>
+          <td class="border border-gray-300 px-4 py-2"><%= calc.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="mt-6">
+  </div>
+</div>
+
+<!-- Pagination Controls -->
+<div class="mt-6 mt-7">
+  <%= paginate @tip_calculations %> <!-- You can use 'bootstrap-4', 'default', or other themes -->
+  </div>
+</div

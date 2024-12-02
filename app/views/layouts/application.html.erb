@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Tip Calculator" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+       <!-- Include the application's stylesheet -->
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+      <div class="container-fluid">
+      <% if admin_signed_in? %>
+        <!-- If an admin is signed in -->
+        <a href="/admin/dashboard" class="navbar-brand">Dashboard</a>
+        <%= link_to 'Log Out', destroy_admin_session_path, data: { turbo_method: :delete }, class: 'btn btn-outline-light' %>
+      <% else %>
+        <!-- Hide Sign Up, Log In links for all pages -->
+        <!-- No need for Sign Up and Log In links anywhere -->
+      <% end %>
+      </div>
+    </nav>
+    <main class="container mt-5">
+      <%= yield %>
+    </main>
+  </body>
+</html>

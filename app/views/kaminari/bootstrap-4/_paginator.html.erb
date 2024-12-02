@@ -1,0 +1,29 @@
+<nav>
+  <ul class="pagination">
+    <% if @tip_calculations.first_page? %>
+      <li class="page-item disabled">
+        <span class="page-link">&laquo;</span>
+      </li>
+    <% else %>
+      <li class="page-item">
+        <%= link_to raw('&laquo;'), @tip_calculations.previous_page, class: 'page-link' %>
+      </li>
+    <% end %>
+
+    <% (1..@tip_calculations.total_pages).each do |page| %>
+      <li class="page-item <%= 'active' if page == @tip_calculations.current_page %>">
+        <%= link_to page, @tip_calculations.page(page), class: 'page-link' %>
+      </li>
+    <% end %>
+
+    <% if @tip_calculations.last_page? %>
+      <li class="page-item disabled">
+        <span class="page-link">&raquo;</span>
+      </li>
+    <% else %>
+      <li class="page-item">
+        <%= link_to raw('&raquo;'), @tip_calculations.next_page, class: 'page-link' %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
