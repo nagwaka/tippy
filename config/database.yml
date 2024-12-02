@@ -24,6 +24,7 @@ production:
     database: <%= ENV['PRODUCTION_DATABASE_NAME'] %>
     username: <%= ENV["PRODUCTION_DATABASE_USERNAME"] %>
     password: <%= ENV["PRODUCTION_DATABASE_PASSWORD"] %>
+    port: <%= ENV['DB_PORT'] %>
     url: <%= ENV['PRODUCTION_DATABASE_URL'] %>
   cache:
     <<: *primary_production
