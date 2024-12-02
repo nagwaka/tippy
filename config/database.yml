@@ -17,6 +17,7 @@ test:
   username: <%= ENV['TEST_DATABASE_USERNAME'] || ENV['POSTGRES_USERNAME'] %>
   password: <%= ENV['TEST_DATABASE_PASSWORD'] || ENV['POSTGRES_PASSWORD'] %>
 
+# Production:
 production:
   primary: &primary_production
     <<: *default
@@ -24,9 +25,16 @@ production:
     username: <%= ENV["PRODUCTION_DATABASE_USERNAME"] %>
     password: <%= ENV["PRODUCTION_DATABASE_PASSWORD"] %>
     url: <%= ENV['PRODUCTION_DATABASE_URL'] %>
-
+  cache:
+    <<: *primary_production
+    database: PRODUCTION_DATABASE_NAME_CACHE
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: PRODUCTION_DATABASE_NAME_QUEUE
+    migrations_paths: db/queue_migrate
   cable:
-    <<: *default
-    database: <%= ENV['PRODUCTION_CABLE_DATABASE_NAME'] || "#{ENV['PRODUCTION_DATABASE_NAME']}_cable" %>
-    username: <%= ENV['PRODUCTION_CABLE_DATABASE_USERNAME'] || ENV['POSTGRES_USERNAME'] %>
-    password: <%= ENV['PRODUCTION_CABLE_DATABASE_PASSWORD'] || ENV['POSTGRES_PASSWORD'] %>
+    <<: *primary_production
+    database: tPRODUCTION_DATABASE_NAME_CABLE
+    migrations_paths: db/cable_migrate
+
