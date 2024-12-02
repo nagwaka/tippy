@@ -7,15 +7,15 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV['DEVELOPMENT_DATABASE_NAME'] %>
-  username: <%= ENV['DEVELOPMENT_DATABASE_USERNAME'] || ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['DEVELOPMENT_DATABASE_PASSWORD'] || ENV['POSTGRES_PASSWORD'] %>
+  #database: <%= ENV['DEVELOPMENT_DATABASE_NAME'] %>
+  #username: <%= ENV['DEVELOPMENT_DATABASE_USERNAME'] || ENV['POSTGRES_USERNAME'] %>
+  #password: <%= ENV['DEVELOPMENT_DATABASE_PASSWORD'] || ENV['POSTGRES_PASSWORD'] %>
 
 test:
   <<: *default
-  database: <%= ENV['TEST_DATABASE_NAME'] %>
-  username: <%= ENV['TEST_DATABASE_USERNAME'] || ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['TEST_DATABASE_PASSWORD'] || ENV['POSTGRES_PASSWORD'] %>
+  #database: <%= ENV['TEST_DATABASE_NAME'] %>
+  #username: <%= ENV['TEST_DATABASE_USERNAME'] || ENV['POSTGRES_USERNAME'] %>
+  #password: <%= ENV['TEST_DATABASE_PASSWORD'] || ENV['POSTGRES_PASSWORD'] %>
 
 # Production:
 production:
